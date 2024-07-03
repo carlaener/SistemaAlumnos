@@ -1,6 +1,5 @@
 #Sistema alumnos Python
-from flask import Flask
-from flask import render_template, request, redirect, url_for 
+from flask import Flask, url_for, render_template, request, redirect
 from flaskext.mysql import MySQL
 from datetime import datetime
 import os
