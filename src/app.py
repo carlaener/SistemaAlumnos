@@ -1,5 +1,5 @@
 #Sistema alumnos Python
-from flask import Flask, url_for, render_template, request, redirect
+from flask import Flask, url_for, render_template, request, redirect, send_from_directory
 from flaskext.mysql import MySQL
 from datetime import datetime
 import os
@@ -16,6 +16,10 @@ UPLOADS = os.path.join('src/uploads')
 app.config['UPLOADS']=UPLOADS
 
 mysql.init_app(app)
+
+@app.route('/fotoalumno/<path:nombreFoto>')
+def uploads(nombreFoto):
+    return send_from_directory(os.path.join('uploads'), nombreFoto)
 
 @app.route('/')
 def index():
