@@ -1,0 +1,18 @@
+{% include 'header.html' %}
+
+<form method="POST" action="/update" enctype="multipart/form-data">
+    <input hidden type="text" value='{{alumno[0]}}' name="txtId" id="txtId">
+    <label for="txtNombre">Nombre:</label>
+    <input type="text" name="txtNombre" id="txtNombre" value='{{alumno[1]}}'>
+    <br />
+    <label for="txtCorreo">Correo:</label>
+    <input type="email" name="txtCorreo" id="txtCorreo" value='{{alumno[2]}}'>
+    <br />
+    Foto: {{alumno[3]}}
+    <label for="txtFoto">Foto:</label>
+    <input type="file" name="txtFoto" id="txtFoto">
+    <br />
+    <input type="submit" value="Modificar alumno" />
+</form>
+
+{% include 'footer.html' %}
