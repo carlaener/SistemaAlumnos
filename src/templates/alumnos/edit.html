@@ -1,18 +1,34 @@
 {% include 'header.html' %}
 
 <form method="POST" action="/update" enctype="multipart/form-data">
-    <input hidden type="text" value='{{alumno[0]}}' name="txtId" id="txtId">
-    <label for="txtNombre">Nombre:</label>
-    <input type="text" name="txtNombre" id="txtNombre" value='{{alumno[1]}}'>
-    <br />
-    <label for="txtCorreo">Correo:</label>
-    <input type="email" name="txtCorreo" id="txtCorreo" value='{{alumno[2]}}'>
-    <br />
-    Foto: {{alumno[3]}}
-    <label for="txtFoto">Foto:</label>
-    <input type="file" name="txtFoto" id="txtFoto">
-    <br />
-    <input type="submit" value="Modificar alumno" />
+    <div class="card">
+        <div class="card-header">
+            Modificar empleado
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                <input hidden type="text" value='{{alumno[0]}}' name="txtId" id="txtId">
+                <div class="form-group">
+                    <label for="txtNombre">Nombre:</label>
+                    <input type="text" name="txtNombre" id="txtNombre" value='{{alumno[1]}}'>
+                </div>
+                <div class="form-group">
+                    <label for="txtCorreo">Correo:</label>
+                    <input type="email" name="txtCorreo" id="txtCorreo" value='{{alumno[2]}}'>
+                <div/>
+                <div class="form-group">
+                    <label for="txtFoto">Foto de perfil:</label>
+                    <img class="image_thumbnail" width="100" alt="foto de perfil" src={{ url_for('uploads', nombreFoto=alumno[3]) }}/>
+                    <input type="file" name="txtFoto" id="txtFoto">
+                <div/>
+                <div clas="form-group">
+                    <input class="btn btn-success" type="submit" value="Modificar alumno" />
+                    <a class="btn btn-primary" href="{{ url_for('index') }}">Regresar</a>
+                </div>
+            </p>
+        </div>
+    </div>
+
 </form>
 
 {% include 'footer.html' %}
