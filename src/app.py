@@ -40,6 +40,7 @@ def create():
 def store():
     
     _nombre = request.form['txtNombre']
+    _dni = request.form['txtDNI']
     _correo = request.form['txtCorreo']
     _foto = request.files['txtFoto']
 
@@ -52,8 +53,8 @@ def store():
         nuevoNombreFoto = tiempo + '_' + _foto.filename
         _foto.save("src/uploads/" + _foto.filename)
 
-    sql = "INSERT INTO alumnos (nombre, correo, foto) values (%s, %s, %s);"
-    datos = (_nombre, _correo, _foto.filename)
+    sql = "INSERT INTO alumnos (nombre, dni, correo, foto) values (%s, %s, %s, %s);"
+    datos = (_nombre, _dni, _correo, _foto.filename)
     conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute(sql, datos)
@@ -99,8 +100,9 @@ def update():
     _correo = request.form['txtCorreo']
     _foto = request.files['txtFoto']
     id = request.form['txtId']
+    _dni = request.form['txtDNI']
 
-    datos = (_nombre, _correo, id)
+    datos = (_nombre, _correo, id, _dni)
 
     conn = mysql.connect()
     cursor = conn.cursor()
@@ -123,7 +125,7 @@ def update():
         cursor.execute(sql)
         conn.commit()
 
-    sql = f'UPDATE alumnos SET nombre="{_nombre}", correo="{_correo}" WHERE id="{id}"'
+    sql = f'UPDATE alumnos SET nombre="{_nombre}", correo="{_correo}", dni="{_dni}" WHERE id="{id}"'
     cursor.execute(sql)
     conn.commit()
 

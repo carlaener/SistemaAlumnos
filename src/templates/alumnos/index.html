@@ -6,6 +6,7 @@
             <th>#</th>
             <th>Foto</th>
             <th>Nombre</th>
+            <th>DNI</th>
             <th>Correo</th>
         </tr>
     </thead>
@@ -17,11 +18,12 @@
                 <img width="100" src="fotoalumno/{{alumno[3]}}" alt="foto de perfil">
             </td>
             <td>{{alumno[1]}}</td>
+            <td>{{alumno[4]}}</td>
             <td>{{alumno[2]}}</td>
             <td>
                 <a class="btn btn-warning" href="/modify/{{alumno[0]}}">Editar</a>
 
-                <a class="btn btn-danger" href="/delete/{{alumno[0]}}">Borrar</a>
+                <a class="btn btn-danger" onclick="return confirm('Está por eliminar un alumno, ¿desea continuar?')" href="/delete/{{alumno[0]}}">Borrar</a>
             </td>
         </tr>
         {% endfor %}
